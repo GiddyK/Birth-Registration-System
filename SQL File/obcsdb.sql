@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2023 at 07:13 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Generation Time: Aug 08, 2024 at 04:46 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,135 +18,204 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `obcsdb`
+-- Database: `certificate_registration`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbladmin`
+-- Table structure for table `acc_information`
 --
 
-CREATE TABLE `tbladmin` (
-  `ID` int(10) NOT NULL,
-  `AdminName` varchar(200) DEFAULT NULL,
-  `UserName` varchar(120) DEFAULT NULL,
-  `MobileNumber` bigint(10) DEFAULT NULL,
-  `Email` varchar(120) DEFAULT NULL,
-  `Password` varchar(200) DEFAULT NULL,
-  `AdminRegdate` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `acc_information` (
+  `user_id` int(100) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `user_phone` varchar(100) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `user_reason` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbladmin`
+-- Dumping data for table `acc_information`
 --
 
-INSERT INTO `tbladmin` (`ID`, `AdminName`, `UserName`, `MobileNumber`, `Email`, `Password`, `AdminRegdate`) VALUES
-(1, 'Admin', 'admin', 8979555556, 'adminuser@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2023-01-05 12:05:09');
+INSERT INTO `acc_information` (`user_id`, `user_name`, `user_phone`, `user_email`, `user_password`, `user_reason`) VALUES
+(69322, 'mhlengi', '1111111', 'mhle@yahoo.com', '78965', 'parent'),
+(16221561, 'Mpen', '76504774', 'mpe@yahoo.com', '12365', 'parent'),
+(23407330, 'Samkelo J', '76713874', 'samkelojd488@gmail.com', '52147', 'parent'),
+(38224425, 'ronok', '', 'rono@gmail.com', 'Giddy@123', ''),
+(668308406, 'Giddy', '', 'koechgideon08@gmail.com', '12345678', ''),
+(2147483647, 'Giddy', '', 'koechgideon08@gmail.com', '12345678', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblapplication`
+-- Table structure for table `child_information`
 --
 
-CREATE TABLE `tblapplication` (
-  `ID` int(10) NOT NULL,
-  `UserID` int(5) NOT NULL,
-  `ApplicationID` varchar(200) DEFAULT NULL,
-  `DateofBirth` varchar(200) DEFAULT NULL,
-  `Gender` varchar(50) DEFAULT NULL,
-  `FullName` varchar(200) DEFAULT NULL,
-  `PlaceofBirth` varchar(200) DEFAULT NULL,
-  `NameofFather` varchar(200) DEFAULT NULL,
-  `NameOfMother` varchar(120) DEFAULT NULL,
-  `PermanentAdd` mediumtext DEFAULT NULL,
-  `PostalAdd` mediumtext DEFAULT NULL,
-  `MobileNumber` bigint(10) DEFAULT NULL,
-  `Email` varchar(200) DEFAULT NULL,
-  `Dateofapply` timestamp NULL DEFAULT current_timestamp(),
-  `Remark` varchar(200) DEFAULT NULL,
-  `Status` varchar(50) DEFAULT NULL,
-  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `child_information` (
+  `comp_num` bigint(100) NOT NULL,
+  `c_id` bigint(100) NOT NULL,
+  `c_name` varchar(100) NOT NULL,
+  `c_surname` text NOT NULL,
+  `DOB` date NOT NULL,
+  `POB` varchar(100) NOT NULL,
+  `sex` varchar(1) NOT NULL,
+  `nationality` varchar(100) NOT NULL,
+  `H_num` bigint(100) NOT NULL,
+  `Birth_order` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tblapplication`
+-- Dumping data for table `child_information`
 --
 
-INSERT INTO `tblapplication` (`ID`, `UserID`, `ApplicationID`, `DateofBirth`, `Gender`, `FullName`, `PlaceofBirth`, `NameofFather`, `NameOfMother`, `PermanentAdd`, `PostalAdd`, `MobileNumber`, `Email`, `Dateofapply`, `Remark`, `Status`, `UpdationDate`) VALUES
-(1, 1, '794994267', '2022-12-10', 'Female', 'Garima Singh', 'Max Vaishali Ghazibad', 'Amit Singh', 'Nisha Singh', 'A 122 Heritage Apartment Vaishali Ghaziabad', 'A 122 Heritage Apartment Vaishali Ghaziabad', 1234567890, 'amit0918@gmail.com', '2023-01-05 01:38:35', 'Application approved.', 'Verified', '2023-01-06 01:11:07'),
-(2, 1, '155835407', '2022-09-01', 'Male', 'Amit Kumar', 'Laxmi New Delhi', 'Atul Kumar', 'Preeti', 'J123 J block Laxmi Nagar', 'J123 J block Laxmi Nagar', 4758696958, 'atl011@test.com', '2023-01-05 01:46:19', 'Details not verified', 'Rejected', '2023-01-06 01:13:22'),
-(5, 4, '205213941', '2022-12-30', 'Female', 'Arnav Singh', 'Max New Delhi', 'Rahul Singh', 'Amita Singh', 'A1232 Xyz Apartment New Delhi', 'A1232 Xyz Apartment New Delhi', 1425365874, 'tett@test.com', '2023-01-07 04:46:11', 'Details verified', 'Verified', '2023-01-07 04:47:23');
+INSERT INTO `child_information` (`comp_num`, `c_id`, `c_name`, `c_surname`, `DOB`, `POB`, `sex`, `nationality`, `H_num`, `Birth_order`) VALUES
+(105285936, 7777, 'Gideon', 'Koech', '2024-06-18', 'kericho', 'm', 'kenyaddd', 555, 0),
+(105341126, 7777349, 'Gideon', 'Koech', '2024-06-18', 'kericho', 'm', 'kenyaddd', 555, 0),
+(105546869, 777734, 'Gideon', 'Koech', '2024-06-18', 'kericho', 'm', 'kenyaddd', 555, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbluser`
+-- Table structure for table `employee`
 --
 
-CREATE TABLE `tbluser` (
-  `ID` int(10) NOT NULL,
-  `FirstName` varchar(200) DEFAULT NULL,
-  `LastName` varchar(200) DEFAULT NULL,
-  `MobileNumber` bigint(10) DEFAULT NULL,
-  `Address` mediumtext DEFAULT NULL,
-  `Password` varchar(200) NOT NULL,
-  `RegDate` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `employee` (
+  `emp_id` int(11) NOT NULL,
+  `emp_name` varchar(11) NOT NULL,
+  `emp_password` varchar(11) NOT NULL,
+  `emp_email` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbluser`
+-- Dumping data for table `employee`
 --
 
-INSERT INTO `tbluser` (`ID`, `FirstName`, `LastName`, `MobileNumber`, `Address`, `Password`, `RegDate`) VALUES
-(1, 'Anuj', 'Kumar', 3636251425, 'New Delhi', 'f925916e2754e5e03f75dd58a5733251', '2023-01-05 01:36:10'),
-(3, 'Rahul ', 'Yadav', 4752632145, 'New Delhi India-110091', 'f925916e2754e5e03f75dd58a5733251', '2023-01-07 04:31:56'),
-(4, 'Amita ', 'Singh', 789412536, 'Ghaziabad UP -201017', 'f925916e2754e5e03f75dd58a5733251', '2023-01-07 04:44:43');
+INSERT INTO `employee` (`emp_id`, `emp_name`, `emp_password`, `emp_email`) VALUES
+(7777, 'Giddy12', '1234567', 'koechgideon'),
+(112233, 'MR Dube', '2023', 'enock@outlo'),
+(112234, 'Mr Lukhele', '2022', 'lukhele@zoo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `father_information`
+--
+
+CREATE TABLE `father_information` (
+  `f_id` bigint(100) NOT NULL,
+  `c_id` bigint(100) NOT NULL,
+  `f_name` varchar(100) NOT NULL,
+  `f_surname` varchar(100) NOT NULL,
+  `f_addr` varchar(100) NOT NULL,
+  `f_occup` varchar(100) NOT NULL,
+  `f_nationality` varchar(100) NOT NULL,
+  `f_status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `father_information`
+--
+
+INSERT INTO `father_information` (`f_id`, `c_id`, `f_name`, `f_surname`, `f_addr`, `f_occup`, `f_nationality`, `f_status`) VALUES
+(667, 7777, 'Gideon', 'Koech', '109 kericho', 'uryry', 'kenya', 'married'),
+(765757, 777734, 'uuu', 'iono', '155 kericho', 'uryry', 'kenya', 'married');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mother_information`
+--
+
+CREATE TABLE `mother_information` (
+  `m_id` bigint(100) NOT NULL,
+  `c_id` bigint(100) NOT NULL,
+  `m_name` varchar(100) NOT NULL,
+  `m_surname` varchar(100) NOT NULL,
+  `m_addr` varchar(100) NOT NULL,
+  `m_occup` varchar(100) NOT NULL,
+  `m_nationality` varchar(100) NOT NULL,
+  `m_status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mother_information`
+--
+
+INSERT INTO `mother_information` (`m_id`, `c_id`, `m_name`, `m_surname`, `m_addr`, `m_occup`, `m_nationality`, `m_status`) VALUES
+(40197746, 777734, 'toto', 'keke', '109 kericho', 'nui', 'kenya', 'single'),
+(77777777, 7777, 'Gideon', 'Koech', '109 kericho', 'nui', 'kenya', 'single');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbladmin`
+-- Indexes for table `acc_information`
 --
-ALTER TABLE `tbladmin`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `acc_information`
+  ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `tblapplication`
+-- Indexes for table `child_information`
 --
-ALTER TABLE `tblapplication`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `child_information`
+  ADD PRIMARY KEY (`comp_num`),
+  ADD UNIQUE KEY `c_id` (`c_id`);
 
 --
--- Indexes for table `tbluser`
+-- Indexes for table `employee`
 --
-ALTER TABLE `tbluser`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `father_information`
+--
+ALTER TABLE `father_information`
+  ADD PRIMARY KEY (`f_id`),
+  ADD UNIQUE KEY `f_key` (`c_id`);
+
+--
+-- Indexes for table `mother_information`
+--
+ALTER TABLE `mother_information`
+  ADD PRIMARY KEY (`m_id`),
+  ADD UNIQUE KEY `f_key` (`c_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `tbladmin`
+-- AUTO_INCREMENT for table `acc_information`
 --
-ALTER TABLE `tbladmin`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `acc_information`
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
 
 --
--- AUTO_INCREMENT for table `tblapplication`
+-- AUTO_INCREMENT for table `child_information`
 --
-ALTER TABLE `tblapplication`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `child_information`
+  MODIFY `comp_num` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9223372036854775807;
 
 --
--- AUTO_INCREMENT for table `tbluser`
+-- Constraints for dumped tables
 --
-ALTER TABLE `tbluser`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for table `father_information`
+--
+ALTER TABLE `father_information`
+  ADD CONSTRAINT `father_information_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `child_information` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mother_information`
+--
+ALTER TABLE `mother_information`
+  ADD CONSTRAINT `mother_information_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `child_information` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
